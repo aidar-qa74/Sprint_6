@@ -1,8 +1,7 @@
 import allure
 
 from data import Urls, OrderPageData
-from locators.base_page_locators import BasePageLocators
-from locators.main_page_locators import MainPageLocators
+
 from locators.order_page_locators import OrderPageLocators
 from pages.base_page import BasePage
 
@@ -71,27 +70,16 @@ class OrderPage(BasePage):
     def get_expected_result(self):
         expected_result = OrderPageData.ORDER_CONFIRM_TITLE_TEXT
         return expected_result
+    
+    @allure.step('Получаем ожидаемый URL страницы заказа')
+    def get_url_order_page(self):
+        return Urls.ORDER_PAGE_URL
+    
 
-    @allure.step('Кликаем на лого Самоката')
-    def click_on_logo_scooter(self):
-        self.click_element(BasePageLocators.SCOOTER_BUTTON)
+    
 
-    @allure.step('Кликаем на лого Яндекса')
-    def click_on_logo_yandex(self):
-        self.click_element(BasePageLocators.YANDEX_BUTTON)
+    
 
-    @allure.step('Ожидаем загрузки заголовка "Самокат на пару дней" на главной странице')
-    def wait_for_load_page_title(self):
-        self.wait_for_load_element(MainPageLocators.PAGE_TITLE)
+    
 
-    @allure.step('Ожидаем открытия страницы Дзена')
-    def wait_for_open_dzen(self):
-        self.wait_for_open_page(Urls.DZEN_URL)
-
-    @allure.step('Получаем ожидаемый URL главной страницы')
-    def get_url_main_page(self):
-        return Urls.MAIN_PAGE_URL
-
-    @allure.step('Получаем ожидаемый URL страницы Дзена')
-    def get_url_dzen_page(self):
-        return Urls.DZEN_URL
+    

@@ -3,6 +3,7 @@ import pytest
 from locators.main_page_locators import MainPageLocators
 from pages.main_page import MainPage
 from data import MainPageData
+from pages.order_page import OrderPage
 
 
 class TestMainPage:
@@ -31,5 +32,6 @@ class TestMainPage:
         main_page.wait_for_load_element(loc)
         main_page.click_element(loc)
         main_page.wait_for_load_form()
-        expected_url = main_page.get_url_order_page()
+        order_page = OrderPage(driver)
+        expected_url = order_page.get_url_order_page()
         assert driver.current_url == expected_url, 'URL не соответствует странице заказа'
