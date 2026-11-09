@@ -74,6 +74,10 @@ class OrderPage(BasePage):
     @allure.step('Получаем ожидаемый URL страницы заказа')
     def get_url_order_page(self):
         return Urls.ORDER_PAGE_URL
+
+    @allure.step('Ожидаем, пока прогрузится форма заказа')
+    def wait_for_load_form(self):
+        self.wait_for_load_element(OrderPageLocators.FORM1_TITLE)
     
 
     
